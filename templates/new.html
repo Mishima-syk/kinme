@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% block body %}
+<main role="main" class="container">
+<div class="row">
+  <div class="col-md-10 offset-md-1" role="alert">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <div class="alert alert-danger">
+      {% for message in messages %}
+      {{ message }}</br>
+      {% endfor %}
+    </div>
+    {% endif %}
+    {% endwith %}
+  </div>
+  <div class="col-md-10 offset-md-1">
+        <form action="/new" method="POST" enctype="multipart/form-data">
+        {{form.csrf_token}}
+        <table class="table">
+          <tr>
+            <th>{{form.name.label}}</th><td>{{form.name(class_='form-control')}}</td>
+            <th>{{form.knwf.label}}</th><td>{{form.knwf(class_='form-control')}}</td>
+          </tr>
+          <tr>
+              <th>{{form.tag.label}}</th><td colspan="3">{{form.tag(class_='form-control')}}</td>
+          </tr>
+          <tr>
+            <td colspan="4">
+              {{form.content(class_='form-control', rows=20)}}
+            </td>
+          </tr>
+          <tr>
+            <td colspan="4">
+              <input type="submit" class="btn btn-primary" name="submit" value="Register knwf"/>
+            </td>
+          </tr>
+        </table>
+        </form>
+  </div>
+</div>
+</main>
+{% endblock %}

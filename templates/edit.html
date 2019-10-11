@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+{% block body %}
+<main role="main" class="container">
+<div class="row">
+  <div class="col-md-10 offset-md-1" role="alert">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <div class="alert alert-danger">
+      {% for message in messages %}
+      {{ message }}</br>
+      {% endfor %}
+    </div>
+    {% endif %}
+    {% endwith %}
+  </div>
+  <div class="col-md-10 offset-md-1">
+        <form action="{{url_for('edit_workflow', workflow_id=workflow.id)}}" method="POST" enctype="multipart/form-data">
+        <table class="table">
+          <tr>
+            <th>workflow name</th><td><input class="form-control" id="name" name="name" value="{{workflow.name}}"></td>
+            <th>knwf file</th><td><input class="form-control" id="knwf" name="knwf" type="file"></td>
+          </tr>
+          <tr>
+              <th>tags</th><td colspan="3"><input class="form-control" id="tag" name="tag" required value="{{tag_str}}"></td>
+          </tr>
+          <tr>
+            <td colspan="4">
+                    <textarea class="form-control" id="content" name="content" required rows="20">{{workflow.content|safe}}</textarea>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="4">
+              <input type="submit" class="btn btn-primary" name="submit" value="register"/>
+            </td>
+          </tr>
+        </table>
+        </form>
+  </div>
+</div>
+</main>
+{% endblock %}

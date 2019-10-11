@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+{% block body %}
+<main role="main" class="container">
+    <div class="col-md-12">
+        <div class="row">
+        <div class="col-md-7">
+        <ul class="list-group">
+        {%- for wf in workflows %}
+            <li class="list-group-item">
+                <a href="{{ url_for('display_workflow', workflow_id=wf.id) }}" data-toggle="tooltip" data-placement="bottom" data-html="true" title="{{wf.rendered_content}}">
+                <h3>{{wf.name}}</h3>
+                </a>
+                {{wf.created_time.strftime('%Y-%m-%d')}}
+                <a class="badge badge-success badge-pill" href="{{url_for('user_filter', user_id=wf.user.id)}}">{{wf.user.screen_name}}</a>
+                {% for tag in wf.tags %}
+                <a class="badge badge-warning badge-pill" href="{{url_for('tag_filter', tag_id=tag.id)}}">{{ tag.name }} </a>
+                {% endfor %}
+        {%- endfor %}
+        </ul>
+    </div>
+    <div class="col-md-5">
+        <h3><i class="fas fa-tags"></i> tags</h3>
+        {%- for tag, c in tags %}
+        <a class="badge badge-warning badge-pill" data-toggle="tooltip" title="{{c}}" href="{{url_for('tag_filter', tag_id=tag.id)}}">{{ tag.name }} </a>
+        {%- endfor %}
+        <hr>
+        <h3><i class="fas fa-user"></i> KNIME users</h3>
+        {%- for user, c in users %}
+        <a class="badge badge-success badge-pill" data-toggle="tooltip" title="{{c}}" href="{{url_for('user_filter', user_id=user.id)}}">{{ user.name }} </a>
+        {%- endfor %}
+        <hr>       
+        <h3><i class="fas fa-box"></i> KNIME nodes</h3>
+        {%- for node, c in nodes %}
+        <a class="badge badge-info badge-pill" data-toggle="tooltip" title="{{c}}" href="{{url_for('node_filter', node_id=node.id)}}">{{ node.name }} </a>
+        {%- endfor %}
+    </div>
+    </div>
+    </div>
+</main>
+<script>
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+{% set user_settings = False %}
+
+{% block body %}
+<div class="container">
+  <div class="col-md-10 offset-md-1">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <div class="alert alert-info">
+      {% for message in messages %}
+      {{ message }}
+      {% endfor %}
+    </div>
+    {% endif %}
+    {% endwith %}
+  </div>
+  <div class="col-md-10 offset-md-1">
+    <form action="/register" method="POST">
+      {{form.csrf_token}}
+      <input type="hidden" name="next" value="{{next}}"/>
+      <table class="table">
+        <tr>
+          <td>
+            {{form.username.label}}
+          </td>
+          <td>
+            {{form.username(class_='form-control')}}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            {{form.password.label}}
+          </td>
+          <td>
+            {{form.password(class_='form-control')}}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input type="submit" name="submit" value="register"/>
+          </td>
+          <td></td>
+        </tr>
+      </table>
+  </form>
+  </div>
+</div>
+{% endblock %}

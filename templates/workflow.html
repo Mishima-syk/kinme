@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+{% block body %}
+<main role="main" class="container">
+<div class="row">
+    <div class="col-12">
+        <a href="/static/workflows/{{workflow.id}}/{{workflow.workflow}}" class="btn btn-lg btn-warning">Download {{workflow.workflow}}</a>
+        <hr>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-9">
+            <div>{{workflow.rendered_content|safe}}</div>
+            <h4>workflow</h4>
+            <div><a href="/static/workflows/{{workflow.id}}/workflow.png"><img src="/static/workflows/{{workflow.id}}/workflow.png" class="wfimage" /></a></div>
+        </div>
+
+        <div class="col-3 bg-light">
+            <h4><i class="fas fa-tags"></i>tags</h4>
+            {%- for tag in workflow.tags %}
+            <a class="badge badge-warning badge-pill" href="{{url_for('tag_filter', tag_id=tag.id)}}">{{ tag.name }} </a>
+            {% endfor%}
+            <hr>
+            <h4><i class="fas fa-box"></i> nodes</h4>
+            {%- for node in workflow.nodes %}
+            <a class="badge badge-info badge-pill" href="{{url_for('node_filter', node_id=node.id)}}">{{ node.name }} </a>
+            {% endfor%}            
+            <hr>
+            <h4><i class="fas fa-user"></i> author</h4>
+            <a class="badge badge-success badge-pill" href="{{url_for('user_filter', user_id=workflow.user_id)}}">{{workflow.user.name}}</a>    
+            <hr>
+            {% if workflow.user_id == current_user.id %}
+            <a class="btn btn-lg btn-warning" href="{{url_for('edit_workflow', workflow_id=workflow.id)}}">Edit</a>    
+            <hr>
+            <a class="btn btn-lg btn-danger" href="{{url_for('delete_workflow', workflow_id=workflow.id)}}"><i class="fas fa-skull-crossbones"></i>Delete</a>
+            <hr>
+            {% endif %}
+        </div>
+    </div>
+</main>
+<script>
+var simplemde = new SimpleMDE({ element: $("mde")[0]});
+</script>
+{% endblock %}

@@ -2,7 +2,7 @@
 
 KNIME workflow file sharing service
 
-# Setup
+## Setup
 
 Install modules
 
@@ -23,5 +23,9 @@ launch flask server
     export FLASK_APP=app.py
     flask run
 
+## Screenshots
 
+![index](images/index.png)
+
+![workflow](images/wf.png)
 

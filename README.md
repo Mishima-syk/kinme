@@ -1,4 +1,6 @@
-# knimea
+# kinme
+
+![kinme](images/kinme.jpeg)
 
 KNIME workflow file sharing service
 

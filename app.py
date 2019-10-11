@@ -18,11 +18,11 @@ from cairosvg import svg2png
 import markdown
 import json
 
-database = os.path.join(os.path.dirname(__file__), 'knimea.db')
+database = os.path.join(os.path.dirname(__file__), 'kinme.db')
 md = markdown.Markdown()
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = "kwms"
+app.config['SECRET_KEY'] = "kinme"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = True
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + database
 

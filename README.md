@@ -2,7 +2,7 @@
 
 ![kinme](images/kinme.png)
 
-KNIME workflow file sharing service
+Kinme is a KNIME workflow file sharing system and its name is come from anagram of KNIME. Izu peninsula is known as the producer of Kinme (Kinmedai), [a high class fish](https://www.thesushigeek.com/the-sushi-geek/2016/01/17/kinmedai-%E9%87%91%E7%9B%AE%E9%AF%9B-splendid-alfonsino) in Japan.
 
 ## Setup
 

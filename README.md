@@ -2,7 +2,7 @@
 
 ![kinme](images/kinme.png)
 
-Kinme is a KNIME workflow sharing system written in Python and its name is the anagram of KNIME. Izu peninsula is known as the producer of Kinme (Kinmedai), [a high class fish](https://www.thesushigeek.com/the-sushi-geek/2016/01/17/kinmedai-%E9%87%91%E7%9B%AE%E9%AF%9B-splendid-alfonsino) in Japan.
+Kinme is a KNIME workflow file sharing system and its name is come from anagram of KNIME. Izu peninsula is known as the producer of Kinme (Kinmedai), [a high class fish](https://www.thesushigeek.com/the-sushi-geek/2016/01/17/kinmedai-%E9%87%91%E7%9B%AE%E9%AF%9B-splendid-alfonsino    ) in Japan.
 
 ## Setup
 
@@ -31,3 +31,6 @@ launch flask server
 
 ![workflow](images/wf.png)
 
+## License
+
+Code released under the [BSD license](LICENSE).
